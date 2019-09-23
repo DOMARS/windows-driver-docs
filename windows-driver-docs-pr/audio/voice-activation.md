@@ -1,63 +1,22 @@
 ---
-title: Voice Activation
-description: Cortana, the Windows speech platform is used to power all of the speech experiences in Windows 10 such as Cortana and Dictation.
-ms.assetid: 0684EF32-AA76-418B-9027-1C067A8140E3
-ms.date: 07/02/2018
-ms.localizationpriority: medium
+title: Multiple Voice Assistant
+description: TODO
+ms.assetid: TODO
+ms.date: 9/23/2019
+ms.localizationpriority: TODO
 ---
+
+The Multiple Voice Assistant platform comes from the belief that our assistant should be available everywhere and so should other assistants be available on Windows devices. The platform is used to power all of speech experiences in an ecosystem of devices from PCs to wearables like HoloLens. This converged voice-activation solution for third party digital assistants allow better privacy controls and power efficiency. Moreover, to enable voice assistant experience that works as expected by users, there are multi-keyword coexistence and chipset agnostic wake-on-voice that allow more than one assistant to be interacted with hands-free and even when PC lids are closed.
 
 # Voice Activation
 
-Cortana, the personal assistant technology was demonstrated for the first time at the Microsoft BUILD Developer Conference in 2013. The Windows speech platform is used to power all of the speech experiences in Windows 10 such as Cortana and Dictation. Voice activation is a feature that enables users to invoke a speech recognition engine from various device power states by saying a specific phrase - "Hey Cortana". To create hardware that supports voice activation technology, review the information in this topic.
-
-**Note**  
+Voice activation is a feature that enables users to invoke a speech recognition engine from various device power states by saying a specific phrase. 
 Implementing voice activation is a significant project and is a task completed by SoC vendors. OEMs can contact their SoC vendor for information on their SoC's implementation of voice activation.
-
-
-## <span id="cortana_end_user_experience">Cortana End User Experience
-
-
-To understand the voice interaction experience available in Windows, review these topics.
-
-|                                                                                                   |                                                                       |
-|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| **Topic**                                                                                         | **Description**                                                       |
-| [What is Cortana?](https://support.microsoft.com/help/17214/cortana-what-is)      | Provides and overview and usage direction for Cortana                 |
-| [Make Cortana yours](https://support.microsoft.com/help/17178/windows-10-make-cortana-yours) | Describes customization available through Cortana's Settings screens. |
-
-
-
-## <span id="introduction_to__hey_cortana__voice_activation_and__learn_my_voice_"></span>Introduction to "Hey Cortana" Voice Activation and "Learn my voice"
-
-
-**"Hey Cortana" Voice Activation**
-
-The "Hey Cortana" Voice Activation (VA) feature allows users to quickly engage the Cortana experience outside of his or her active context (i.e., what is currently on screen) by using his or her voice. Users often want to be able to instantly access an experience without having to physically interact touch a device. For phone users this may be due to driving in the car and having their attention and hands engaged with operating the vehicle. For an Xbox user this may be due not wanting to find and connect a controller. For PC users, this may be due to rapid access to an experience without having to perform multiple mouse, touch and/or keyboard actions, e.g. a computer in the kitchen.
-
-Voice activation provides always listening speech input via predefined key phrase(s) or "activation phrases". Key phrases may be uttered by themselves ("Hey Cortana") as a staged command, or followed by a speech action, for example, "Hey Cortana, where is my next meeting?", a chained command.
-
-The term *Keyword Detection*, describes the detection of the keyword by either hardware or software.
-
-*Keyword only* activation occurs when only the Cortana keyword is said, Cortana starts and plays the EarCon sound to indicate that it has entered listening mode.
-
-A *chained command* describes the ability of issuing a command immediately following the keyword (like “Hey Cortana, call John”) and have Cortana start (if not already started) and follow the command (starting a phone call with John).
-
-This diagram illustrates chained and keyword only activation.
-
-![chained and keyword activation diagram showing audio buffer and time sequence](images/audio-chained-keyword-activation.png)
-
-Microsoft provides an OS default keyword spotter (software keyword spotter) that is used to ensure quality of hardware keyword detections and to provide the Hey Cortana experience in cases where hardware keyword detection is absent or unavailable. 
-
-**The "Learn my voice" feature**
-
-The "Learn my voice" feature allows the user to train Cortana to recognize their unique voice. This is accomplished by the user clicking on *Learn how I say "Hey Cortana"* in the Cortana settings screen. The user then repeats six carefully chosen phrases that provide a sufficient variety of phonetic patterns to identify the unique attributes of the users voice.
-
-![cortana desktop settings for hw keyword spotter wake on voice](images/audio-voice-activation-settings-2017.png)
-
-When voice activation is paired with "Learn my voice", the two algorithms will work together to reduce false activations. This is especially valuable for the meeting room scenario, where one person says "Hey Cortana" in a room full of devices.
-
-Voice activation is powered by a keyword spotter (KWS) which reacts if the key phrase is detected. If the KWS is to wake the device from a low powered state, the solution is known as Wake on Voice (WoV). For more information, see [Wake on Voice](#wake_on_voice).
-
+Voice activation allows users to quickly engage the voice assistant experience outside of his or her active context (i.e., what is currently on screen) by using his or her voice. Users often want to be able to instantly access an experience without having to physically interact with or touch a device. For phone users this may be due to driving in the car and having their attention and hands engaged with operating the vehicle. For an Xbox user this may be from not wanting to find and connect a controller. For PC users, they might want rapid access to an experience without having to perform multiple mouse, touch and/or keyboard actions, as in the case of a computer in the kitchen.
+Voice activation is powered by a keyword spotter (KWS) which reacts if the key phrase is detected. Key phrases may include key words such as “Hey Contoso.” *Keyword detection* describes the detection of the keyword by either hardware or software.
+Key phrases may be uttered by themselves (“Hey Contoso”) as a staged command, or followed by a speech action composing a chained command (“Hey Contoso, where is my next meeting?”)
+Microsoft provides an OS default keyword spotter (software keyword spotter) to provide voice assistant experience in cases where hardware keyword detection is unavailable. While this is currently available for Cortana, additional Microsoft configuration may be needed to onboard other voice assistants to do two-stage keyword detection, so contact us at [AskMVA@microsoft.com](AskMVA@microsoft.com).  
+If KWS is to wake the device from a low powered state, the solution is known as Wake-on-Voice (WoV). For more information, see [Wake on Voice](#wake_on_voice).
 
 ## <span id="glossary_of_terms"></span><span id="Glossary_Of_Terms"></span>Glossary of Terms
 
@@ -65,24 +24,26 @@ This glossary summarizes terms related to voice activation.
 
 |                      |                                                                                                                                                           |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Staged Command        | Example: Hey Cortana <pause, wait for earcon> What’s the weather? This is sometimes referred to as “Two-shot command” or “Keyword-only” |
-|Chained Command        | Example: Hey Cortana what’s the weather? This is sometimes referred to as a “One-shot command” |
-| Voice Activation      | The scenario of providing keyword detection of a predefined activation keyphrase. For example, "Hey Cortana" is the Microsoft Voice Activation scenario. |
-|WoV                    | Wake-on-Voice – Technology that enables Voice Activation from a screen off, lower power state, to a screen on full power state. |
-|WoV from Modern Standby| Wake-on-Voice from a Modern Standby (S0ix) screen off state to a screen on full power (S0) state. |
-|Modern Standby |Windows Low Power Idle infrastructure - successor to Connected Standby (CS) in Windows 10. The first state of modern standby is when the screen is off. The deepest sleep state is when in DRIPS/Resiliency. For more information, see [Modern Standby](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)   |
-|KWS                    |Keyword spotter – the algorithm that provides the detection of “Hey Cortana” |
-| SW KWS                |Software keyword spotter – an implementation of KWS that runs on the host (CPU). For "Hey Cortana", SW KWS is included as part of Windows. |
-| HW KWS                | Hardware-offloaded keyword spotter – an implementation of KWS that runs offloaded on hardware. |
-|Burst Buffer           | A circular buffer used to store PCM data that can be ‘bursted up’ in the event of a KWS detection, so that all audio that triggered a KWS detection is included. |
-|Keyword Detector OEM Adapter |A driver-level shim that enables the WoV-enabled HW to communicate with Windows and the Cortana stack. |
-|Model | The acoustic model data file used by the KWS algorithm. The data file is static. Models are localized, one per locale.|
+| Staged Command | Example: Hey Contoso <pause, wait for assistant UI> What’s the weather? This is sometimes referred to as “two-shot command” or “keyword-only” |
+| Chained Command | Example: Hey Contoso what’s the weather? This is sometimes referred to as a “one-shot command” |
+| Voice Activation | Example: "Hey Contoso" The scenario where keyword is detected in a predefined activation key phrase |
+| Wake-on-Voice (WoV) | Technology that enables voice activation from a screen off, lower power state, to a screen on full power state |
+|WoV from Modern Standby| Wake-on-Voice from a Modern Standby (S0ix) screen off state to a screen on full power (S0) state |
+| Modern Standby | Windows Low Power Idle infrastructure - successor to Connected Standby (CS) in Windows 10. The first state of modern standby is when the screen is off. The deepest sleep state is when in DRIPS/Resiliency. For more information, see [Modern Standby](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)|
+| KWS | Keyword spotter – the algorithm that provides the detection of “Hey Contoso” |
+| SW KWS | Software keyword spotter – an implementation of KWS that runs on the host (CPU). For "Hey Cortana", SW KWS is included as part of Windows. |
+| HW KWS | Hardware keyword spotter – an implementation of KWS that runs offloaded on hardware |
+| Burst buffer | A circular buffer used to store PCM data that can be bursted up in the event of a KWS detection, so that all audio that triggered a KWS detection is included |
+| Event detector OEM Adapter | A user mode component that acts as an intermediary between the Windows voice assistant stack and driver |
+| Model | The acoustic model data file used by the KWS algorithm. The data file is static. Models are localized, one per locale.|
+| MVA | Multiple Voice Agent - new HWKWS DDI which supports multiple agents |
+| SVA | Single Voice Agent - previous HWKWS DDI which only supports a single agent (Cortana) |
 
 ## <span id="Implementing_Voice_Activation"></span><span id="implementing_voice_activation"></span><span id="IMPLEMENTING_VOICE_ACTIVATION"></span>Integrating a Hardware Keyword Spotter
 
 To implement a hardware keyword spotter (HW KWS) SoC vendors must complete the following tasks.
 
--   Create a custom keyword detector based on the SYSVAD sample described later in this topic. You will implement these methods in a COM DLL, described in [Keyword Detector OEM Adapter Interface](#keyword_detector).
+-   Create a custom keyword detector based on the SYSVAD sample described later in this topic. You will implement these methods in a COM DLL, described in [IEvent Detector OEM Adapter Interface](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter).
 -   Implement WAVE RT enhancements described in [WAVERT Enhancements](#wavert_enhancements).
 -   Provide INF file entries to describe any custom APOs used for keyword detection.
     -   [PKEY\_FX\_KeywordDetector\_StreamEffectClsid](https://docs.microsoft.com/windows-hardware/drivers/audio/pkey-fx-keyworddetector-streameffectclsid)
@@ -93,7 +54,7 @@ To implement a hardware keyword spotter (HW KWS) SoC vendors must complete the f
     -   [PKEY\_EFX\_KeywordDetector\_ProcessingModes\_Supported\_For\_Streaming](https://docs.microsoft.com/windows-hardware/drivers/audio/pkey-efx-keyworddetector-processingmodes-supported-for-streaming)
 -   Review the hardware recommendations and test guidance in [Audio Device Recommendation](https://docs.microsoft.com/windows-hardware/design/component-guidelines/audio). This topic provides guidance and recommendations for the design and development of audio input devices intended for use with Microsoft’s Speech Platform.
 -   Support both staged and chained commands.
--   Support “Hey Cortana” for each of the supported Cortana locales. 
+-   Meet locale requirements of voice assistants
 -   The APOs (Audio Processing Objects) must provide the following effects: 
     -   AEC
     -   AGC
@@ -108,68 +69,58 @@ Hardware-offloaded keyword spotter (HW KWS) WoV Requirements
 - HW KWS WoV is supported during S0 Working state and S0 sleep state also known as Modern Standby.  
 - HW KWS WoV is not supported from S3.  
 
-AEC Requirements for HW KWS
+**AEC**
+AEC can be performed by the DSP at the time the burst audio is captured, or it can be done at a later time via a software APO. In order to perform a software AEC with KWS burst data, it is necessary to have the corresponding loopback audio from the time the burst data was captured. To do this a custom audio format for the burst output was created which interleaves the loopback audio into the burst audio data. The Microsoft AEC APO is aware of this interleaved format and can use it to perform the AEC. For more information, see [KSPROPERTY_INTERLEAVEDAUDIO_FORMATINFORMATION](https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/ksproperty-interleavedaudio-formatinformation). 
 
-- For Windows Version 1709
-    - To support HW KWS WoV for S0 sleep state (Modern Standby) AEC is not required.  
-    - HW KWS WoV for S0 working state is not supported in Windows Version 1709.
+**Validation**
 
-- For Windows Version 1803 
-    - HW KWS WoV for S0 working state is supported.
-    - To enable HW KWS WoV for S0 working state, the APO must support AEC.
-
+Validate HW support for KSPROPSETID_SoundDetector2 properties with [Voice Activation Manager 2 tests](https://docs.microsoft.com/en-us/windows-hardware/test/hlk/testref/5119a80f-8aae-49bb-aa59-8eaa7e7b1fad).
 
 ## <span id="sample_code_overview"></span>Sample Code Overview
 
+There is sample code for an audio driver that implements voice activation on GitHub as part of the SYSVAD virtual audio adapter sample. It is recommended to use [this code](https://github.com/Microsoft/Windows-driver-samples/blob/master/audio/sysvad/) as a starting point. 
 
-There is sample code for an audio driver that implements voice activation on GitHub as part of the SYSVAD virtual audio adapter sample. It is recommended to use this code as a starting point. The code is available at this location.
-
-<https://github.com/Microsoft/Windows-driver-samples/blob/master/audio/sysvad/>
-
-For more information about the SYSVAD sample audio driver, see [Sample Audio Drivers](sample-audio-drivers.md).
+For more information about the SYSVAD sample audio driver, see [Sample Audio Drivers](https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/sample-audio-drivers).
 
 ## <span id="keyword_recognition_system_information"></span>Keyword Recognition System Information
-
 
 **Voice Activation Audio Stack Support**
 
 The audio stack external interfaces for enabling Voice Activation serves as the communication pipeline for the speech platform and the audio drivers. The external interfaces are divided into three parts.
 
--   *Keyword detector Device Driver Interface (DDI)*. The Keyword detector Device Driver Interface is responsible for configuring and arming the HW Keyword Spotter (KWS).  It is also used by the driver to notify the system of a detection event.
--   *Keyword Detector OEM Adapter DLL*. This DLL implements a COM interface to adapt the driver specific opaque data for use by the OS to assist with keyword detection.
+-   [*Event detector Device Driver Interface (DDI)*](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter)*. The Event detector Device Driver Interface is responsible for configuring and arming the HW Keyword Spotter (KWS).  It is also used by the driver to notify the system of a detection event.
+-   [*IEvent Detector OEM Adapter DLL*](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter)*. This DLL implements a COM interface to adapt the driver specific opaque data for use by the OS to assist with keyword detection.
 -   *WaveRT streaming enhancements*. The enhancements enable the audio driver to burst stream the buffered audio data from the keyword detection.
 
 **Audio Endpoint Properties**
 
-Audio endpoint graph building occurs normally. The graph is prepared to handle faster than real time capture. Timestamps on captured buffers remain true. Specifically, the timestamps will correctly reflect data that was captured in the past and buffered, and is now “bursting”.
+Audio endpoint graph building occurs normally. The graph is prepared to handle faster than real time capture. Timestamps on captured buffers remain true. Specifically, the timestamps will correctly reflect data that was captured in the past and buffered, and is now bursting.
 
 **Theory of Operation**
 
 The driver exposes a KS filter for its capture device as usual. This filter supports several KS properties and a KS event to configure, enable and signal a detection event. The filter also includes an additional pin factory identified as a keyword spotter (KWS) pin. This pin is used to stream audio from the keyword spotter.
 
-The properties are:
+The property is: **KSPROPSETID_SoundDetector2**
 
--   Supported keyword types - [**KSPROPERTY\_SOUNDDETECTOR\_PATTERNS**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-patterns). This property is set by the operating system to configure the keywords to be detected.
--   List of keyword patterns GUIDs - [**KSPROPERTY\_SOUNDDETECTOR\_SUPPORTEDPATTERNS**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-supportedpatterns). This property is used to get a list of GUIDs that identify the types of supported patterns.
--   Armed - [**KSPROPERTY\_SOUNDDETECTOR\_ARMED**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-armed). This read/write property is a simply Boolean status indicating whether the detector is armed. The OS sets this to engage the keyword detector. The OS can clear this to disengage. The driver automatically clears this when keyword patterns are set and also after a keyword is detected. (The OS must rearm.)
--   Match result - [**KSPROPERTY\_SOUNDDETECTOR\_MATCHRESULT**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-matchresult). This read property holds the result data after detection has occurred.
+All KSPROPSETID_SoundDetector2 properties are called with a KSSOUNDDETECTORPROPERTY data structure. This data structure contains a KSPROPERTY and the event id for the keyword to be armed, reset, detected, etc.
 
-The event that is fired when a keyword is detected is a [**KSEVENT\_SOUNDDETECTOR\_MATCHDETECTED**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksevent-sounddetector-matchdetected) event.
+-   Supported keyword types - [**KSPROPERTY\_SOUNDDETECTOR\_PATTERNS**](https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/ksproperty-sounddetector). This property is set by the operating system to configure the keywords to be detected.
+-   List of keyword patterns GUIDs - [**KSPROPERTY\_SOUNDDETECTOR\_SUPPORTEDPATTERNS**](https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/ksproperty-sounddetector). This property is used to get a list of GUIDs that identify the types of supported patterns.
+-   Armed - [**KSPROPERTY\_SOUNDDETECTOR\_ARMED**](https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/ksproperty-sounddetector). This read/write property is a simply Boolean status indicating whether the detector is armed. The OS sets this to engage the keyword detector. The OS can clear this to disengage. The driver automatically clears this when keyword patterns are set and also after a keyword is detected. (The OS must rearm.)
+-   Match result - **KSPROPERTY\_SOUNDDETECTOR\_RESET** is used to reset the sound detector at startup time. 
+
+At keyword detection time, a PNP notification containing KSNOTIFICATIONID_SoundDetector is sent. NOTE: this is not a KSEvent, but rather a PNP event which is sent, with a payload, via IoReportTargetDeviceChangeAsynchronous.
 
 **Sequence of Operation**
 
 *System Startup*
 
-1. The OS reads the supported keyword types to verify it has keywords in that format.
-2. The OS registers for the detector status change event.
-3. The OS sets the keyword patterns.
-4. The OS arms the detector.
-
-*On Receiving the KS Event*
-
-1. The driver disarms the detector.
-2. The OS reads the keyword detector status, parses the returned data, and determines which pattern was detected.
-3. The OS rearms the detector.
+1. The os sends a KSPROPERTY_SOUNDDETECTOR_RESET to clear any previous detector state, resetting all detectors to disarmed and clearing previous patterns set.
+2. The OS queries KSPROPERTY_SOUNDDETECTOR_PATTERNS to retrieve the clsid for the event detector OEM adapter.
+3. The OS uses the event detector oem adapter to retrieve the list of supported keywords and languages.
+4. The OS registers for custom PNP notifications sent by the driver
+5. The OS sets the required keyword pattern(s).
+6. The OS arms the detector(s)
 
 **Internal Driver and Hardware Operation**
 
@@ -179,22 +130,22 @@ When the hardware detects a keyword, it generates an interrupt. While waiting fo
 
 **Keyword Timestamps**
 
-After detecting a keyword, all voice activation solutions must buffer all of the spoken keyword, including 250ms before the start of the keyword. The audio driver must provide timestamps identifying the start and end of the key phrase in the stream.
+After detecting a keyword, all voice activation solutions must buffer all of the spoken keyword, including 1.6s before the start of the keyword. The audio driver must provide timestamps identifying the start and end of the key phrase in the stream.
 
 In order to support the keyword start/end timestamps, DSP software may need to internally timestamp events based on a DSP clock. Once a keyword is detected, the DSP software interacts with the driver to prepare a KS event. The driver and DSP software will need to map the DSP timestamps to a Windows performance counter value. The method of doing this is specific to the hardware design. One possible solution is for the driver to read current performance counter, query the current DSP timestamp, read current performance counter again, and then estimate a correlation between performance counter and DSP time. Then given the correlation, the driver can map the keyword DSP timestamps to Windows performance counter timestamps.
 
 
-## <span id="keyword_detector"></span>Keyword Detector OEM Adapter Interface
+## <span id="ievent_detector"></span>IEvent Detector OEM Adapter Interface
 
 The OEM supplies a COM object implementation that acts as an intermediary between the OS and the driver, helping to compute or parse the opaque data that is written and read to the audio driver through [**KSPROPERTY\_SOUNDDETECTOR\_PATTERNS**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-patterns) and [**KSPROPERTY\_SOUNDDETECTOR\_MATCHRESULT**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-matchresult).
 
-The CLSID of the COM object is a detector pattern type GUID returned by the [**KSPROPERTY\_SOUNDDETECTOR\_SUPPORTEDPATTERNS**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-supportedpatterns). The OS calls CoCreateInstance passing the pattern type GUID to instantiate the appropriate COM object that is compatible with keyword pattern type and calls methods on the object’s IKeywordDetectorOemAdapter interface.
+The CLSID of the COM object is a detector pattern type GUID returned by the [**KSPROPERTY\_SOUNDDETECTOR\_SUPPORTEDPATTERNS**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-sounddetector-supportedpatterns). The OS calls CoCreateInstance passing the pattern type GUID to instantiate the appropriate COM object that is compatible with keyword pattern type and calls methods on the object’s IEventDetectorOemAdapter interface.
 
 **COM Threading Model requirements**
 
 The OEM’s implementation may choose any of the COM threading models.
 
-**IKeywordDetectorOemAdapter**
+**IEventDetectorOemAdapter**
 
 The interface design attempts to keep the object implementation stateless. In other words, the implementation should require no state to be stored between method calls. In fact, internal C++ classes likely do not need any member variables beyond those required to implement a COM object in general.
 
@@ -202,118 +153,21 @@ The interface design attempts to keep the object implementation stateless. In ot
 
 Implement the following methods.
 
--   [**IKeywordDetectorOemAdapter::BuildArmingPatternData**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-buildarmingpatterndata)
--   [**IKeywordDetectorOemAdapter::ComputeAndAddUserModelData**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-computeandaddusermodeldata)
--   [**IKeywordDetectorOemAdapter::GetCapabilities**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-getcapabilities)
--   [**IKeywordDetectorOemAdapter::ParseDetectionResultData**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-parsedetectionresultdata)
--   [**IKeywordDetectorOemAdapter::VerifyUserKeyword**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-verifyuserkeyword)
-
-**KEYWORDID**
-
-The [**KEYWORDID**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/ne-keyworddetectoroemadapter-__midl_ikeyworddetectoroemadapter_0002) enumeration identifies the phrase text/function of a keyword and is also used in the Windows Biometric Service adapters. For more information, see [Biometric Framework Overview - Core Platform Components](https://docs.microsoft.com/windows/desktop/SecBioMet/biometric-framework-overview)
-
-```cpp
-typedef enum  { 
-  KwInvalid              = 0,
-  KwHeyCortana           = 1,
-  KwSelect               = 2
-} KEYWORDID;
-```
-
-**KEYWORDSELECTOR**
-
-The [**KEYWORDSELECTOR**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/ns-keyworddetectoroemadapter-__midl_ikeyworddetectoroemadapter_0003) struct is a set of IDs that uniquely select a particular keyword and language.
-
-```cpp
-typedef struct
-{
-    KEYWORDID KeywordId;
-    LANGID LangId;
-} KEYWORDSELECTOR;
-```
-
-**Handling Model Data**
-
-*Static user independent model* - The OEM DLL would typically include some static user independent model data either built into the DLL or in a separate data file included with the DLL. The set of supported keyword IDs returned by the GetCapabilities routine would depend on this data. For example, if the list of supported keyword IDs returned by GetCapabilities includes KwHeyCortana, the static user independent model data would include data for “Hey Cortana” (or its translation) for all the supported languages.
-
-*Dynamic user dependent model* - IStream provides a random access storage model. The OS passes an IStream interface pointer to many of the methods on the IKeywordDetectorOemAdapter interface. The OS backs the IStream implementation with appropriate storage for up to 1MB of data.
-
-The content and structure of the data within this storage is defined by the OEM. The intended purpose is for persistent storage of user dependent model data computed or retrieved by the OEM DLL.
-
-The OS may call the interface methods with an empty IStream, particularly if the user has never trained a keyword. The OS creates a separate IStream storage for each user. In other words, a given IStream stores model data for one and only one user.
-
-The OEM DLL developer decides how to manage the user independent and user dependent data. However, it shall never store user data anywhere outside the IStream. One possible OEM DLL design would internally switch between accessing the IStream and the static user independent data depending on the parameters of the current method. An alternate design might check the IStream at the start of each method call and add the static user independent data to the IStream if not already present, allowing the rest of the method to access only the IStream for all model data.
-
-## <span id="Training_and_Operation_Audio_Processing"></span><span id="training_and_operation_audio_processing"></span><span id="TRAINING_AND_OPERATION_AUDIO_PROCESSING"></span>Training and Operation Audio Processing
-
-
-As described previously, the training UI flow results in full phonetically rich sentences being available in the audio stream. Each sentence is individually passed to [**IKeywordDetectorOemAdapter::VerifyUserKeyword**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-verifyuserkeyword) to verify it contains the expected keyword and has acceptable quality. After all sentences are gathered and verified by the UI, they are all passed in one call to [**IKeywordDetectorOemAdapter::ComputeAndAddUserModelData**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-computeandaddusermodeldata).
-
-Audio is processed in a unique way for voice activation training. The following table summarizes the differences between voice activation training and the regular voice recognition usage.
-
-<table>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left"></td>
-<td align="left"><strong>Voice Training</strong></td>
-<td align="left"><strong>Voice Recognition</strong></td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Mode</strong></td>
-<td align="left">Raw</td>
-<td align="left">Raw or Speech</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Pin</strong></td>
-<td align="left">Normal</td>
-<td align="left">KWS</td>
-</tr>
-<tr class="even">
-<td align="left"><strong>Audio Format</strong></td>
-<td align="left">32-bit float (Type = Audio, Subtype = IEEE_FLOAT, Sampling Rate = 16 kHz, bits = 32)</td>
-<td align="left">Managed by OS audio stack</td>
-</tr>
-<tr class="odd">
-<td align="left"><strong>Mic</strong></td>
-<td align="left">Mic 0</td>
-<td align="left">All mics in array, or mono</td>
-</tr>
-</tbody>
-</table>
-
-
+-   [**IEventDetectorOemAdapter::BuildArmingPatternData**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-buildarmingpatterndata)
+-   [**IEventDetectorOemAdapter::ComputeAndAddUserModelData**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-computeandaddusermodeldata)
+-   [**IEventDetectorOemAdapter::GetCapabilities**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-getcapabilities)
+-   [**IEventDetectorOemAdapter::GetCapabilitiesForLanguage**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-getcapabilitiesforlanguage)
+-   [**IEventDetectorOemAdapter::ParseDetectionResultData**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-parsedetectionresultdata)
+-   [**IEventDetectorOemAdapter::ReportOSDetectionResult**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-parsedetectionresultdata)
+-   [**IEventDetectorOemAdapter::VerifyUserEventData**](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nf-eventdetectoroemadapter-ieventdetectoroemadapter-verifyusereventdata)
 
 ## <span id="Keyword_Recognition_System_Overview"></span><span id="keyword_recognition_system_overview"></span><span id="KEYWORD_RECOGNITION_SYSTEM_OVERVIEW"></span>Keyword Recognition System Overview
-
 
 This diagram provides an overview of the keyword recognition system.
 
 ![keyword recognition system including cortana the speech runtime and the voice activation manager](images/audio-simple-voice-recon-diagram1.png)
 
-## <span id="Keyword_Recognition__Sequence_Diagrams"></span><span id="keyword_recognition__sequence_diagrams"></span><span id="KEYWORD_RECOGNITION__SEQUENCE_DIAGRAMS"></span>Keyword Recognition Sequence Diagrams
-
-
-In these diagrams, the speech runtime module is shown as the “speech platform”. As mentioned previously, the Windows speech platform is used to power all of the speech experiences in Windows 10 such as Cortana and dictation.
-
-During startup, capabilities are gathered using [**IKeywordDetectorOemAdapter::GetCapabilities**](https://docs.microsoft.com/windows-hardware/drivers/ddi/content/keyworddetectoroemadapter/nf-keyworddetectoroemadapter-ikeyworddetectoroemadapter-getcapabilities).
-
-![keyword recognition sequence showing training ux speech platform and the oem keyword detector during startup](images/audio-voice-activation-startup.png)
-
-Later when the user selects to "Learn my voice", the training flow is invoked.
-
-![keyword recognition sequence showing training ux speech platform and the oem keyword detector during learn my voice](images/audio-voice-activation-training.png)
-
-This diagram describes the process of arming for keyword detection.
-
-![keyword recognition sequence showing speech platform oem keyword detector and the audio drive detector during arming for keyword detection](images/audio-voice-activation-arming.png)
-
 ## <span id="WAVERT_Enhancements"></span><span id="wavert_enhancements"></span><span id="WAVERT_ENHANCEMENTS"></span>WAVERT Enhancements
-
 
 Miniport interfaces are defined to be implemented by WaveRT miniport drivers. These interfaces provide methods to either simplify the audio driver, improve OS audio pipeline performance and reliability, or support new scenarios. A new PnP device interface property is defined allowing the driver to provide a static expressions of its buffer size constraints to the OS.
 
@@ -371,16 +225,43 @@ To burst data that has been captured prior to transition to KSSTATE\_RUN, the dr
 6. Go to (2).
 For [**KSNODETYPE\_AUDIO\_KEYWORDDETECTOR**](https://docs.microsoft.com/windows-hardware/drivers/audio/ksnodetype-audio-keyworddetector) keyword detector pins, drivers should allocate enough internal burst buffering for at least 5000ms of audio data. If the OS fails to create a stream on the pin before the buffer overflows then the driver may end the internal buffering activity and free associated resources.
 
-
 ## <span id="Wake_on_Voice"></span><span id="wake_on_voice"></span><span id="WAKE_ON_VOICE"></span>Wake on Voice
 
-Wake On Voice (WoV) enables the user to activate and query a speech recognition engine from a screen off, lower power state, to a screen on, full power state by saying a certain keyword, such as "Hey Cortana".
-
-This feature allows for the device to be always listening for the user’s voice while the device is in a low power state, including when the screen is off and the device is idle. It does this by using a listening mode, which is lower power when compared to the much higher power usage seen during normal microphone recording. The low power speech recognition allows a user to simply say a pre-defined key phrase like "Hey Cortana", followed by a chained speech phrase like "when’s my next appointment" to invoke speech in a hands-free manner. This will work regardless of whether the device is in use or idle with the screen off.
-
-The audio stack is responsible for communicating the wake data (speaker ID, keyword trigger, confidence level) as well as notifying interested clients that the keyword has been detected.
-
+Wake-on-Voice (WoV) enables the user to activate and query a speech recognition engine from a low power state to a full power state with screen on by saying a certain keyword, such as "Hey Contoso."
+This feature allows for the device to be always listening for the user’s voice while the device is idle and the screen is off. This is due to listening mode which uses much less power compared to normal microphone recording. WoV allows for chained speech phrase like “Hey Contoso, when’s my next appointment” to invoke a response from a voice assistant in a hands-free manner.
+The audio stack is responsible for communicating the wake data (speaker ID, keyword trigger, context information on confidence level) as well as notifying interested clients that the keyword has been detected.
 
 **Validation on Modern Standby Systems**
 
 WoV from a system idle state can be validated on [Modern Standby](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby) systems using the [Modern Standby Wake on Voice Basic Test on AC-power Source](https://docs.microsoft.com/windows-hardware/test/hlk/testref/69df7cf2-6024-4eee-92ee-1506480614ee) and the [Modern Standby Wake on Voice Basic Test on DC-power Source](https://docs.microsoft.com/windows-hardware/test/hlk/testref/614ffb93-eced-45ab-bf7b-e09291a97fd2) in the [HLK](https://docs.microsoft.com/windows-hardware/test/hlk/). These tests check that the system has a hardware keyword spotter (HW-KWS), is able to enter the Deepest Runtime Idle Platform State (DRIPS) and is able to wake from Modern Standby on voice command with system resume latency of less than or equal to one second. 
+
+## <span id="Voice Assistant Tools"></span><span id="voice_assistant_tools"></span><span id="VOICE_ASSISTANT_TOOLS"></span>Voice Assistant Tools
+
+Microsoft provides some tools for creating voice assistants and conversational agents. Contact us at [AskMVA@microsoft.com](AskMVA@microsoft.com) for further support.
+
+[**Speech Devices SDK**](https://aka.ms/sdsdk-get)
+-   Reference and off-the shelf hardware for audio input
+-	World-class audio processing with AEC, side-talk suppression, speaker identification, and more
+-	On-device custom wake words
+
+[**MVA SDK**](https://docs.microsoft.com/en-us/uwp/api/windows.applicationmodel.conversationalagent)
+-   Receive hardware and software activations
+-	Manage conversational agent state
+-	Coordinate interaction in low power and above lock scenarios 
+
+[**Azure Speech Services**](https://speech.microsoft.com/)
+-   Industry-leading capabilities for wake word verification, speech-to-text, text-to-speech, and machine translation
+-	Available in the cloud, on-premises (containerized), and limited on-device
+
+[**Bot Framework**](https://aka.ms/botframework)
+-   Versatile, extensible dialog systems for speech and typed interaction
+-	Works with Microsoft Language Understanding (LUIS) for intent recognition
+
+[**Speech Commands**](https://commands.speech.microsoft.com/)
+-   Simplified, streamlined creation of task completion dialogs
+-	Portal-driven design with built-in LUIS and Bot Framework integration
+-	Hosted/managed deployment with speech services
+
+[**Direct Line Speech**](https://aka.ms/directLineSpeech)
+-   “One round trip” assistant solution – wake word, speech-to-text, dialog + LU, text-to-speech all in a single request
+-	Speech SDK APIs for use across many devices, many platforms, many coding languages
