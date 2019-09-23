@@ -8,7 +8,7 @@ ms.localizationpriority: TODO
 
 The Multiple Voice Assistant platform comes from the belief that our assistant should be available everywhere and so should other assistants be available on Windows devices. The platform is used to power all of speech experiences in an ecosystem of devices from PCs to wearables like HoloLens. This converged voice-activation solution for third party digital assistants allow better privacy controls and power efficiency. Moreover, to enable voice assistant experience that works as expected by users, there are multi-keyword coexistence and chipset agnostic wake-on-voice that allow more than one assistant to be interacted with hands-free and even when PC lids are closed.
 
-# Voice Activation
+## Voice Activation
 
 Voice activation is a feature that enables users to invoke a speech recognition engine from various device power states by saying a specific phrase. 
 Implementing voice activation is a significant project and is a task completed by SoC vendors. OEMs can contact their SoC vendor for information on their SoC's implementation of voice activation.
@@ -70,6 +70,7 @@ Hardware-offloaded keyword spotter (HW KWS) WoV Requirements
 - HW KWS WoV is not supported from S3.  
 
 **AEC**
+
 AEC can be performed by the DSP at the time the burst audio is captured, or it can be done at a later time via a software APO. In order to perform a software AEC with KWS burst data, it is necessary to have the corresponding loopback audio from the time the burst data was captured. To do this a custom audio format for the burst output was created which interleaves the loopback audio into the burst audio data. The Microsoft AEC APO is aware of this interleaved format and can use it to perform the AEC. For more information, see [KSPROPERTY_INTERLEAVEDAUDIO_FORMATINFORMATION](https://docs.microsoft.com/en-us/windows-hardware/drivers/audio/ksproperty-interleavedaudio-formatinformation). 
 
 **Validation**
@@ -88,8 +89,8 @@ For more information about the SYSVAD sample audio driver, see [Sample Audio Dri
 
 The audio stack external interfaces for enabling Voice Activation serves as the communication pipeline for the speech platform and the audio drivers. The external interfaces are divided into three parts.
 
--   [*Event detector Device Driver Interface (DDI)*](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter)*. The Event detector Device Driver Interface is responsible for configuring and arming the HW Keyword Spotter (KWS).  It is also used by the driver to notify the system of a detection event.
--   [*IEvent Detector OEM Adapter DLL*](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter)*. This DLL implements a COM interface to adapt the driver specific opaque data for use by the OS to assist with keyword detection.
+-   [*Event detector Device Driver Interface (DDI)*](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter). The Event detector Device Driver Interface is responsible for configuring and arming the HW Keyword Spotter (KWS).  It is also used by the driver to notify the system of a detection event.
+-   [*IEvent Detector OEM Adapter DLL*](https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/content/eventdetectoroemadapter/nn-eventdetectoroemadapter-ieventdetectoroemadapter). This DLL implements a COM interface to adapt the driver specific opaque data for use by the OS to assist with keyword detection.
 -   *WaveRT streaming enhancements*. The enhancements enable the audio driver to burst stream the buffered audio data from the keyword detection.
 
 **Audio Endpoint Properties**
@@ -115,7 +116,7 @@ At keyword detection time, a PNP notification containing KSNOTIFICATIONID_SoundD
 
 *System Startup*
 
-1. The os sends a KSPROPERTY_SOUNDDETECTOR_RESET to clear any previous detector state, resetting all detectors to disarmed and clearing previous patterns set.
+1. The OS sends a KSPROPERTY_SOUNDDETECTOR_RESET to clear any previous detector state, resetting all detectors to disarmed and clearing previous patterns set.
 2. The OS queries KSPROPERTY_SOUNDDETECTOR_PATTERNS to retrieve the clsid for the event detector OEM adapter.
 3. The OS uses the event detector oem adapter to retrieve the list of supported keywords and languages.
 4. The OS registers for custom PNP notifications sent by the driver
